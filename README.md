@@ -29,6 +29,23 @@ Of course, you can just try run the dbt project locally.
 
 There is a `workaround` branch that uses this to access the columns instead of `model.columns`, but this is undesirable:
 
-```jinja
-{%- set model_cols = graph.nodes["model.demo.my_second_dbt_model"].columns -%}
+```diff
+diff --git a/macros/demo.sql b/macros/demo.sql
+index f55d77c..e03f79c 100644
+--- a/macros/demo.sql
++++ b/macros/demo.sql
+@@ -9,7 +9,7 @@
+ {%- macro demo_cols() -%}
+     {%- if execute -%}
+         {%- set columns = (
+-            model.columns.values()
++            graph.nodes["model.demo.my_second_dbt_model"].columns.values()
+             | list
+         ) -%}
+         {%- for col in columns -%}
 ```
+
+### Running the workaround
+
+    git checkout workaround
+    docker compose up --attach dbt
