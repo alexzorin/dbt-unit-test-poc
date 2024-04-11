@@ -9,7 +9,7 @@
 {%- macro demo_cols() -%}
     {%- if execute -%}
         {%- set columns = (
-            model.columns.values()
+            graph.nodes["model.demo.my_second_dbt_model"].columns.values()
             | list
         ) -%}
         {%- for col in columns -%}
