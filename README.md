@@ -49,3 +49,9 @@ index f55d77c..e03f79c 100644
 
     git checkout workaround
     docker compose up --attach dbt
+
+## Relevant Files
+
+- Macro line that is the source of the crash: https://github.com/alexzorin/dbt-unit-test-poc/blob/d66958a69ef4b9c4a9e3a85d3b9e46ce34117fdc/macros/demo.sql#L11-L13
+- Model that uses the macro: https://github.com/alexzorin/dbt-unit-test-poc/blob/main/models/example/my_second_dbt_model.sql#L2
+- The unit test: https://github.com/alexzorin/dbt-unit-test-poc/blob/main/tests/unit/demo.sql
